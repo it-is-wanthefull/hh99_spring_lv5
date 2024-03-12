@@ -17,8 +17,8 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping("/lectures")
 @RequiredArgsConstructor
+@RequestMapping("/lectures")
 public class LectureController {
     private final LectureService lectureService;
 
@@ -30,7 +30,7 @@ public class LectureController {
             LectureRegisterResponseDto lectureRegisterResponseDto = lectureService.registerLecture(lectureRegisterRequestDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(lectureRegisterResponseDto);
         } catch (Exception e) {
-            LectureRegisterResponseDto lectureRegisterResponseDto = new LectureRegisterResponseDto("강의등록 실패: " + e.getMessage());
+            LectureRegisterResponseDto lectureRegisterResponseDto = new LectureRegisterResponseDto("강의 등록 실패: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(lectureRegisterResponseDto);
         }
     }
@@ -42,7 +42,7 @@ public class LectureController {
             LectureIdResponseDto lectureIdResponseDto = lectureService.getLectureByLectureId(lectureId);
             return ResponseEntity.status(HttpStatus.OK).body(lectureIdResponseDto);
         } catch (Exception e) {
-            LectureIdResponseDto lectureIdResponseDto = new LectureIdResponseDto("강의번호로 강의조회 실패: " + e.getMessage());
+            LectureIdResponseDto lectureIdResponseDto = new LectureIdResponseDto("강의번호로 강의 조회 실패: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(lectureIdResponseDto);
         }
     }
@@ -54,7 +54,7 @@ public class LectureController {
             List<LectureCategoryResponseDto> lectureCategoryResponseDtoList = lectureService.getLectureByCategory(category, order, direction);
             return ResponseEntity.status(HttpStatus.OK).body(lectureCategoryResponseDtoList);
         } catch (Exception e) {
-            List<LectureCategoryResponseDto> lectureCategoryResponseDtoList = Collections.singletonList(new LectureCategoryResponseDto("카테고리로 강의조회 실패: " + e.getMessage()));
+            List<LectureCategoryResponseDto> lectureCategoryResponseDtoList = Collections.singletonList(new LectureCategoryResponseDto("카테고리로 강의 조회 실패: " + e.getMessage()));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(lectureCategoryResponseDtoList);
         }
     }

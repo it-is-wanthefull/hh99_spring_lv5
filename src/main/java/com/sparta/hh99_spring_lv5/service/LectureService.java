@@ -5,14 +5,13 @@ import com.sparta.hh99_spring_lv5.model.dto.LectureIdResponseDto;
 import com.sparta.hh99_spring_lv5.model.dto.LectureRegisterRequestDto;
 import com.sparta.hh99_spring_lv5.model.dto.LectureRegisterResponseDto;
 import com.sparta.hh99_spring_lv5.model.entity.Lecture;
-import com.sparta.hh99_spring_lv5.model.entity.Teacher;
 import com.sparta.hh99_spring_lv5.model.enumtype.CategoryEnum;
 import com.sparta.hh99_spring_lv5.repository.LectureRepository;
-import com.sparta.hh99_spring_lv5.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -22,16 +21,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class LectureService {
     private final LectureRepository lectureRepository;
-    private final TeacherRepository teacherRepository;
 
+    @Transactional
     public LectureRegisterResponseDto registerLecture(LectureRegisterRequestDto lectureRegisterRequestDto) {
-        Optional<Teacher> optionalTeacher = teacherRepository.findById(lectureRegisterRequestDto.getTeacherId());
         Lecture lecture = new Lecture(lectureRegisterRequestDto);
-        lecture.setTeacher(optionalTeacher.get());
         Lecture savedLecture = lectureRepository.save(lecture);
         return new LectureRegisterResponseDto(savedLecture);
     }
 
+    @Transactional
     public LectureIdResponseDto getLectureByLectureId(Long lectureId) {
         Optional<Lecture> optionalLecture = lectureRepository.findById(lectureId);
 
@@ -42,6 +40,7 @@ public class LectureService {
         }
     }
 
+    @Transactional
     public List<LectureCategoryResponseDto> getLectureByCategory(CategoryEnum category, String order, String direction) {
         Sort sort;
         if (order == null || direction == null) {

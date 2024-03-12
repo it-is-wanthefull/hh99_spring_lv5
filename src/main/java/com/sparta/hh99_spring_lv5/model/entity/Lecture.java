@@ -41,17 +41,9 @@ public class Lecture {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
 
-    @ManyToOne
-    @JoinColumn(name = "teacherId")
-    private Teacher teacher;
-
     @OneToMany(mappedBy = "lecture")
     @MapKey(name = "commentId")
     private Map<Long, Comment> commentMap = new HashMap<>();
-
-    @OneToMany(mappedBy = "lecture")
-    @MapKey(name = "likeId")
-    private Map<Long, Like> likeMap = new HashMap<>();
 
     public Lecture(LectureRegisterRequestDto lectureRegisterRequestDto) {
         this.lectureName = lectureRegisterRequestDto.getLectureName();
