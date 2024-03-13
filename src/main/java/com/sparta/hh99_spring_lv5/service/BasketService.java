@@ -42,7 +42,6 @@ public class BasketService {
         } else if (amount <= 0) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수량은 1 이상이어야 합니다.");
         }
-        product.setAmount(product.getAmount() - amount);
 
         // 장바구니에 상품 추가 및 수량 반영
         Basket basket = new Basket(userId, product, amount);

@@ -35,12 +35,6 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
-//    @OneToMany(mappedBy = "user")
-//    private List<Comment> comment = new ArrayList<>();
-//
-//    @OneToMany(mappedBy = "user")
-//    private List<Like> like = new ArrayList<>();
-
     public User(String email, String password, String gender, String phoneNUm, String address, UserRoleEnum role) {
         this.email = email;
         this.password = password;
