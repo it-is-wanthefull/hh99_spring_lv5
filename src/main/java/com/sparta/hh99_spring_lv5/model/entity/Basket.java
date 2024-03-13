@@ -1,13 +1,18 @@
 package com.sparta.hh99_spring_lv5.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Entity
 @Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "baskets")
 public class Basket {
     @Id
@@ -17,7 +22,16 @@ public class Basket {
     @Column(nullable = false)
     private Long userId;
 
-    @OneToMany
-    @MapKey(name = "productId")
-    private Map<Long, Product> productMap = new HashMap<>();
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Product product;
+
+    @Column(nullable = false)
+    private int amount;
+
+    public Basket(Long userId, Product product, int amount) {
+        this.userId = userId;
+        this.product = product;
+        this.amount = amount;
+    }
 }

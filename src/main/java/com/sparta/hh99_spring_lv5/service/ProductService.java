@@ -40,6 +40,7 @@ public class ProductService {
         Sort.Direction direction = isASC ? Sort.Direction.ASC : Sort.Direction.DESC;
         Sort sort = Sort.by(direction, sortBy);
         Pageable pageable = PageRequest.of(page, pageSize, sort);
+
         Page<Product> productList = productRepository.findAll(pageable);
         return productList.getContent().stream().map(ProductResponseDto::new).collect(Collectors.toList());
     }
