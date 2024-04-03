@@ -28,9 +28,9 @@ jobs: # 실제 어떤 작업을 실행할지에 대한 명시
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          source: "./build/libs/*.jar" # 로컬에서 복사할 JAR 파일의 경로 또는 패턴
-          target: "~" # 복사되는 인스턴스의 대상 경로, ~는 홈디렉토리를 뜻함
-          strip_components: 2 # 로컬디렉토리 뒷2개단위주소를 복사하여 타겟디렉토리에 복사
+          source: "./build/libs/*.jar" # 로컬의 jar주소
+          target: "~" # 타겟의 홈디렉토리주소
+          strip_components: 2 # 타겟의 하위주소로 쓸 로컬의 하위2개주소
 
       - name: SSH Commands
         uses: appleboy/ssh-action@v0.1.6
