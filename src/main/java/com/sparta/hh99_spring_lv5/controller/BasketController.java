@@ -2,7 +2,6 @@ package com.sparta.hh99_spring_lv5.controller;
 
 import com.sparta.hh99_spring_lv5.model.dto.BasketPriceResponseDto;
 import com.sparta.hh99_spring_lv5.model.dto.BasketResponseDto;
-import com.sparta.hh99_spring_lv5.model.entity.Basket;
 import com.sparta.hh99_spring_lv5.model.enumtype.UserRoleEnum;
 import com.sparta.hh99_spring_lv5.service.BasketService;
 import lombok.RequiredArgsConstructor;
@@ -10,8 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

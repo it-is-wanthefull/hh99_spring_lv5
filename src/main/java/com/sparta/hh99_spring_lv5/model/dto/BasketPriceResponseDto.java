@@ -1,6 +1,5 @@
 package com.sparta.hh99_spring_lv5.model.dto;
 
-import com.sparta.hh99_spring_lv5.model.entity.Basket;
 import lombok.Getter;
 import lombok.Setter;
 

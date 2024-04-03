@@ -1,13 +1,9 @@
 package com.sparta.hh99_spring_lv5.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Entity
 @Getter
